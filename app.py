@@ -16,6 +16,10 @@ if not os.path.exists(MODEL_PATH):
 
 model = YOLO("best.pt")
 
+@app.route('/')
+def home():
+    return "Server is running. Use POST /count with an image to get person count."
+
 @app.route('/count', methods=['POST'])
 def count_people():
     if 'image' not in request.files:
